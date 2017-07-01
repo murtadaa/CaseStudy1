@@ -9,7 +9,16 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## R Markdown
+The data analyzed in this case study summarizes and visualizes two data sets, 
+craft beers and breweries from the United States. Included in the data is a list of 
+2410 beer variations and 557 breweries from all 51 States. The data also includes the 
+following: City, Names, IDs, Alcohol by Volume (ABV), International Bitterness Unit (IBU),etc. 
+
+After merging the data, we will be computing the median alcohol content and IBU for
+each state, identifying which state has the maximum alcoholic beer and bitterness, 
+summarize ABV, and find relationships between bitterness and alcoholic content.
+Some visual aids such (plots) will be accompanying the data for further clarification. 
+
 
 #################################################################
 R.version 
