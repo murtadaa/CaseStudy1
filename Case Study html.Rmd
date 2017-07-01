@@ -7,7 +7,7 @@ date: "June 30, 2017"
 output: md_document
   
 ---
-
+knitr::opts_chunk$set(echo = FALSE) 
 
 
 The data analyzed in this case study summarizes and visualizes two data sets, 
@@ -22,7 +22,7 @@ Some visual aids such (plots) will be accompanying the data for further clarific
 
 
 #################################################################
-1```{r proof}
+```{r proof}
 R.version 
 ```
 
@@ -32,7 +32,7 @@ library(plyr)
 
 setwd("C:\\Users\\Murtada\\Desktop\\SMU DATA SCIENCE\\2017 MAY TERM\\Doing Data Science\\CASE STUDY 1\\GitHub\\CaseStudy1")
 
-1```{r proof}
+```{r proof}
 beers<- read.csv("C:\\Users\\Murtada\\Desktop\\SMU DATA SCIENCE\\2017 MAY TERM\\Doing Data Science\\CASE STUDY 1\\GitHub\\RawData\\Beers.csv")
 breweries<- read.csv("C:\\Users\\Murtada\\Desktop\\SMU DATA SCIENCE\\2017 MAY TERM\\Doing Data Science\\CASE STUDY 1\\GitHub\\RawData\\Breweries.csv")
 ```
@@ -44,7 +44,7 @@ We have states like WV, SD, DC that have one brewery and other heavy
 hitters like CA, MI, and CO. The code bellow elegantly uses the variable
 to summarize how many breweries are in in the data set. 
 
-1```{r prof}
+```{r prof}
 summary(breweries$State)
 ```
 
@@ -56,7 +56,7 @@ The merge function is used to merge both data sets and the head/tail
 function is used to display the first 6 and last 6 observations. 
 
 
-1```{r prof}
+```{r prof}
 Merg<-merge(x=breweries, y=beers, by.x="Brew_ID", by.y="Brewery_id", all=TRUE)
 #####################First 6 Observations
 head(Merg)
@@ -70,7 +70,7 @@ The number of NA's in each column are as following:
 In ABV there are 62 NA's. 
 in IBU there are 1005 NA's
 
-1```{r prof}
+```{r prof}
 colSums(is.na(Merg))
 ```
 
@@ -79,16 +79,16 @@ colSums(is.na(Merg))
 The following computes the median alcohol content and international
 bitterness unit for each state. The bar graph is a visual representation of the data. 
 
-1```{r prof}
+```{r prof}
 MedABV <- aggregate(ABV ~State, data =Merg, FUN = median)
 MedIBU <- aggregate(IBU ~State, data =Merg, FUN = median)
 ```
 
-1```{r pressure, echo=TRUE}
+```{r pressure, echo=TRUE}
 ggplot(data = MedABV,aes(State, ABV,fill=ABV)) +geom_bar(color="black",stat = "identity")+theme(text=element_text(size=15))
 ```
 
-1```{r pressure, echo=TRUE}
+```{r pressure, echo=TRUE}
 ggplot(data = MedIBU,aes(State, IBU,fill=IBU)) +geom_bar(color="black",stat = "identity")+theme(text=element_text(size=15))
 ```
 
@@ -97,7 +97,7 @@ ggplot(data = MedIBU,aes(State, IBU,fill=IBU)) +geom_bar(color="black",stat = "i
 From the following analysis we have determined Colorado has the maximum alcoholic beer. 
 Also from the same analysis we have determined Oregon has the most bitter beer. 
 
-1```{r prof}
+```{r prof}
 Merg[which.max(Merg$ABV),]
 Merg[which.max(Merg$IBU),]
 ```
@@ -106,7 +106,7 @@ Merg[which.max(Merg$IBU),]
 6 
 The following displays the summary statistics for the ABV variable: 
 
-1```{r prof}
+```{r prof}
 summary(Merg$ABV)
 ```
 
@@ -114,7 +114,7 @@ summary(Merg$ABV)
 The following displays the relationship between the bitterness of the beer 
 and its alcoholic content using a scatter plot: 
 
-1```{r pressure, echo=TRUE}
+```{r pressure, echo=TRUE}
 Scattergraph <- ggplot(Merg, aes(IBU, ABV, label = State)) + geom_point(shape=1) +
   geom_smooth(method = lm) 
 Scattergraph
