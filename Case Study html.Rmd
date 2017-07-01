@@ -4,13 +4,14 @@
 title: "Case Study 1"
 author: "Murtada Shubbar"
 date: "June 30, 2017"
-output: md_document
-         
-  
+output:
+  html_document:
+    keep_md: true
 ---
 knitr::opts_chunk$set(echo = TRUE) 
 
-
+Data Analysis: Murtada Shubbar
+ 
 The data analyzed in this case study summarizes and visualizes two data sets, 
 craft beers and breweries from the United States. Included in the data is a list of 
 2410 beer variations and 557 breweries from all 51 States. The data also includes the 
@@ -40,7 +41,7 @@ breweries<- read.csv("C:\\Users\\Murtada\\Desktop\\SMU DATA SCIENCE\\2017 MAY TE
 ```
 
 
-1
+Question 1
 The following displays how many breweries are present in each state.
 We have states like WV, SD, DC that have one brewery and other heavy
 hitters like CA, MI, and CO. The code bellow elegantly uses the variable
@@ -51,7 +52,7 @@ summary(breweries$State)
 ```
 
 
-Number 2 
+Question 2 
 As we can see, the two data sets are merged bellow by the brewery id. 
 The first and last 6 observations are printed to verify the merging. 
 The merge function is used to merge both data sets and the head/tail
@@ -67,7 +68,7 @@ tail(Merg)
 ```
 
 
-3
+Question 3 
 The number of NA's in each column are as following: 
 In ABV there are 62 NA's. 
 in IBU there are 1005 NA's
@@ -77,7 +78,7 @@ colSums(is.na(Merg))
 ```
 
 
-4 
+Question 4 
 The following computes the median alcohol content and international
 bitterness unit for each state. The bar graph is a visual representation of the data. 
 
@@ -96,7 +97,7 @@ ggplot(data = MedIBU,aes(State, IBU,fill=IBU)) +geom_bar(color="black",stat = "i
 ```
 
 
-5
+Question 5
 From the following analysis we have determined Colorado has the maximum alcoholic beer. 
 Also from the same analysis we have determined Oregon has the most bitter beer. 
 
@@ -106,14 +107,14 @@ Merg[which.max(Merg$IBU),]
 ```
 
 
-6 
+Question 6
 The following displays the summary statistics for the ABV variable: 
 
 ```{r prof8}
 summary(Merg$ABV)
 ```
 
-7 
+Question 7 
 The following displays the relationship between the bitterness of the beer 
 and its alcoholic content using a scatter plot: 
 
